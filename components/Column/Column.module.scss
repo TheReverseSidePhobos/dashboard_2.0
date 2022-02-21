@@ -1,0 +1,90 @@
+@import '../../styles//color.scss';
+.colomn {
+  margin: 0 10px;
+  width: 25%;
+}
+.title {
+  font-size: 24px;
+  text-align: center;
+}
+.card {
+  width: 250px;
+  height: 280px;
+  border-radius: 12px;
+  background-color: rgb(241, 247, 243);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  margin: 10px auto;
+  padding: 10px;
+  cursor: pointer;
+}
+.card__btn {
+  border: none;
+  background-color: rgba(10, 90, 37, 0.158);
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-size: 26px;
+  &:hover {
+    background-color: rgba(10, 90, 37, 0.274);
+    color: $main;
+    cursor: pointer;
+  }
+}
+.buttons {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  &:hover {
+    color: rgb(175, 8, 8);
+    transform: rotate(90deg);
+  }
+}
+.date {
+  text-align: center;
+  font-size: 18px;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+.blue {
+  color: blue;
+}
+.item_title {
+  text-align: center;
+  font-size: 24px;
+}
+.item_text {
+  text-align: center;
+  font-size: 18px;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.item__priority {
+  font-size: 18px;
+}
+.detailed {
+  margin: 10px 0;
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 26px;
+  text-align: center;
+  background-color: rgba(10, 90, 37, 0.158);
+  &:hover {
+    background-color: rgba(10, 90, 37, 0.274);
+    color: $main;
+  }
+}

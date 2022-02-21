@@ -1,8 +1,17 @@
-import Head from 'next/head'
-import Layout from '../components/Layout/Layout'
-import Modal from '../components/Modal/Modal'
+import Head from 'next/head';
+import Layout from '../components/Layout/Layout';
+import Modal from '../components/Modal/Modal';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useSelector } from 'react-redux';
+import SideBar from '../components/SideBar/SideBar';
+import Column from '../components/Column/Column';
 
 export default function Home() {
+  const { modalShow, tasks } = useSelector((state) => state.task);
+  const new_tasks = tasks.filter((task) => task.position == 'new');
+  const progress_tasks = tasks.filter((task) => task.position == 'progress');
+  const done_tasks = tasks.filter((task) => task.position == 'done');
+
   return (
     <div>
       <Head>
@@ -11,9 +20,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <Modal/>
+        <div className="page container">
+          <SideBar />
+          <Column position="new" inner_tasks={new_tasks} />
+          <Column position="progress" inner_tasks={progress_tasks} />
+          <Column position="done" inner_tasks={done_tasks} />
+        </div>
+        {modalShow && <Modal />}
       </Layout>
-
     </div>
-  )
+  );
 }

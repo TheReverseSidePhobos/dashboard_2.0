@@ -1,7 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './Column.module.scss';
-import { updateTasks } from '../../redux/actions/actions';
+import { convertDateFunc } from '../../utils/ustils';
+import {
+  infoToggleModalAC,
+  saveObjForInfo,
+  updateTasks
+} from '../../redux/actions/actions';
 import { useSelector } from 'react-redux';
 const Column = ({ position, inner_tasks }) => {
   const dispatch = useDispatch();
@@ -25,7 +30,6 @@ const Column = ({ position, inner_tasks }) => {
   const { tasks } = useSelector((state) => state.task);
 
   const changePosition = (id, position, tasks) => {
-    debugger;
     tasks.map((item) => {
       if (item.id == id) {
         item.position = position;
@@ -36,33 +40,22 @@ const Column = ({ position, inner_tasks }) => {
 
   const handleNextBtn = (item) => {
     if (item.position == 'new') {
-      debugger;
       changePosition(item.id, 'progress', tasks);
     } else if (item.position == 'progress') {
-      debugger;
       changePosition(item.id, 'done', tasks);
     }
   };
   const handlePrevBtn = (item) => {
     if (item.position == 'done') {
-      debugger;
       changePosition(item.id, 'progress', tasks);
     } else if (item.position == 'progress') {
-      debugger;
       changePosition(item.id, 'new', tasks);
     }
   };
 
-  let data;
-  const convertDateFunc = (date) => {
-    let newDate = Date.parse(date);
-    let d = new Date(newDate);
-    let yaer = d.getFullYear();
-    let month = d.getMonth() + 1;
-    let day = d.getDate();
-    let stringCorrectDate = `${day} : ${month} : ${yaer}`;
-    data = d;
-    return stringCorrectDate;
+  const handleInfoModalShow = (item) => {
+    dispatch(saveObjForInfo(item));
+    dispatch(infoToggleModalAC());
   };
 
   return (
@@ -159,7 +152,7 @@ const Column = ({ position, inner_tasks }) => {
                     </button>
                   </div>
                   <div
-                    //onClick={() => handleInfoModalShow(item.id)}
+                    onClick={() => handleInfoModalShow(item)}
                     className={styles.detailed}
                   >
                     Show Details

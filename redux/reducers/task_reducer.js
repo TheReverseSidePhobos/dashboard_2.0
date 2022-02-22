@@ -3,7 +3,9 @@ import * as types from '../actions/types';
 const initialState = {
   tasks: [],
   startDate: null,
-  modalShow: false
+  modalShow: false,
+  selectedForInfo: null,
+  info_modal_show: false
 };
 
 export const task_reducer = (state = initialState, action) => {
@@ -27,6 +29,16 @@ export const task_reducer = (state = initialState, action) => {
       return {
         ...state,
         tasks: action.payload
+      };
+    case types.SAVE_OBJ_FOR_INFO:
+      return {
+        ...state,
+        selectedForInfo: action.payload
+      };
+    case types.INFO_TOGGLE_MODAL:
+      return {
+        ...state,
+        info_modal_show: !state.info_modal_show
       };
     default:
       return state;

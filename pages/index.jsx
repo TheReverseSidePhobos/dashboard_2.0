@@ -5,9 +5,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useSelector } from 'react-redux';
 import SideBar from '../components/SideBar/SideBar';
 import Column from '../components/Column/Column';
+import ModalDetaile from '../components/ModalDetaile/ModalDetaile';
 
 export default function Home() {
-  const { modalShow, tasks } = useSelector((state) => state.task);
+  const { modalShow, tasks, info_modal_show } = useSelector(
+    (state) => state.task
+  );
   const new_tasks = tasks.filter((task) => task.position == 'new');
   const progress_tasks = tasks.filter((task) => task.position == 'progress');
   const done_tasks = tasks.filter((task) => task.position == 'done');
@@ -21,12 +24,19 @@ export default function Home() {
       </Head>
       <Layout>
         <div className="page container">
-          <SideBar />
-          <Column position="new" inner_tasks={new_tasks} />
-          <Column position="progress" inner_tasks={progress_tasks} />
-          <Column position="done" inner_tasks={done_tasks} />
+          
+          <div className="sidebar">
+            <SideBar />
+          </div>
+          <div className="columns">
+            <Column position="new" inner_tasks={new_tasks} />
+            <Column position="progress" inner_tasks={progress_tasks} />
+            <Column position="done" inner_tasks={done_tasks} />
+          </div>
         </div>
+
         {modalShow && <Modal />}
+        {info_modal_show && <ModalDetaile />}
       </Layout>
     </div>
   );

@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import styles from '../../styles/Header.module.scss';
 import cn from 'classnames';
+import Burger from '../Burger/Burger';
+
 const Header = () => {
   const headerItem = cn(styles.header__item, styles.headerButton);
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
+        <Burger />
         <div className={styles.header__section}>
           <div className={headerItem}>
             <Link href={'/'}>
@@ -39,6 +43,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      
     </header>
   );
 };

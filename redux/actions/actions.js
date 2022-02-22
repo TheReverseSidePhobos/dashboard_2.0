@@ -18,3 +18,14 @@ export const updateTasks = (tasks) => {
     payload: tasks
   };
 };
+export const saveObjForInfo = (obj) => {
+  return {
+    type: types.SAVE_OBJ_FOR_INFO,
+    payload: obj
+  };
+};
+export const infoToggleModalAC = () => {
+  return {
+    type: types.INFO_TOGGLE_MODAL
+  };
+};

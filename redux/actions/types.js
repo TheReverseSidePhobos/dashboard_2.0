@@ -3,3 +3,5 @@ export const TOGGLE_MODAL_SUC = 'TOGGLE_MODAL_SUC';
 export const SAVE_START_DATE = 'SAVE_START_DATE';
 export const SAVE_TASK = 'SAVE_TASK';
 export const UPDATE_TASKS = 'UPDATE_TASKS';
+export const SAVE_OBJ_FOR_INFO = 'SAVE_OBJ_FOR_INFO';
+export const INFO_TOGGLE_MODAL = 'INFO_TOGGLE_MODAL';

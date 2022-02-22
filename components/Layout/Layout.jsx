@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { useDispatch } from 'react-redux';
 import Head from 'next/head';
 
 const Layout = ({ children }) => {
-  
   return (
     <>
       <Head>
@@ -24,7 +22,7 @@ const Layout = ({ children }) => {
         <div className="header">
           <Header />
         </div>
-
+        
         <div className="main">{children}</div>
         <div className="footer">
           <Footer />

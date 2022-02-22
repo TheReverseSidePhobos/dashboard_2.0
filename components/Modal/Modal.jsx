@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../../styles/Popup.module.scss';
+import styles from './Popup.module.scss';
 import DatePicker from 'react-datepicker';
 import { useDispatch } from 'react-redux';
 import * as types from '../../redux/actions/types';
@@ -103,8 +103,8 @@ const Modal = () => {
                   {touched.textTask && !values.textTask ? (
                     <div className={styles.warning}>is required</div>
                   ) : null}
-                  <label htmlFor=''/>
-                  <input name='' type={'checkbox'} />
+                  <label htmlFor="" />
+                  <input name="" type={'checkbox'} />
                   <button
                     disabled={!values.taskName || !values.textTask}
                     className={

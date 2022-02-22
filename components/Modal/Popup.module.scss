@@ -1,4 +1,5 @@
-@import './color.scss';
+@import '../../styles//color.scss';
+
 .popup {
   position: fixed;
   width: 100%;
@@ -6,6 +7,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
+  z-index: 2;
 
   .warning {
     color: red;
@@ -26,6 +28,15 @@
     padding: 30px;
     position: relative;
     border-radius: 12px;
+    @media (max-width: '570px') {
+      min-width: 380px;
+    }
+    @media (max-width: '450px') {
+      min-width: 300px;
+    }
+    @media (max-width: '375px') {
+      min-width: 200px;
+    }
   }
   .popup__close {
     position: absolute;
@@ -44,6 +55,9 @@
   .popup__title {
     font-size: 40px;
     text-align: center;
+    @media (max-width: '375px') {
+      font-size: 30px;
+    }
   }
   .form {
     .inp,
@@ -58,15 +72,57 @@
       padding: 7px 7px;
       border-radius: 12px;
       font-size: 20px;
+      @media (max-width: '520px') {
+        width: 300px;
+      }
+      @media (max-width: '375px') {
+        width: 240px;
+      }
+    }
+    .field__itemBtn_disabled {
+      @media (max-width: '520px') {
+        width: 316px;
+      }
+      @media (max-width: '375px') {
+        width: 256px;
+      }
+    }
+    .field__itemBtn {
+      @media (max-width: '520px') {
+        width: 316px;
+      }
+      @media (max-width: '375px') {
+        width: 256px;
+      }
+    }
+    .select__item {
+      @media (max-width: '520px') {
+        width: 316px;
+      }
+      @media (max-width: '375px') {
+        width: 256px;
+      }
     }
     .inp {
       width: 400px;
+      @media (max-width: '520px') {
+        width: 300px;
+      }
+      @media (max-width: '375px') {
+        width: 240px;
+      }
     }
     display: flex;
     flex-direction: column;
     .dp {
       text-align: center;
       width: 400px;
+      @media (max-width: '520px') {
+        width: 300px;
+      }
+      @media (max-width: '375px') {
+        width: 240px;
+      }
     }
     .field__item {
       width: 400px;

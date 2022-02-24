@@ -8,6 +8,7 @@ import {
   updateTasks
 } from '../../redux/actions/actions';
 import { useSelector } from 'react-redux';
+
 const Column = ({ position, inner_tasks }) => {
   const dispatch = useDispatch();
   const position_name =
@@ -58,15 +59,39 @@ const Column = ({ position, inner_tasks }) => {
     dispatch(infoToggleModalAC());
   };
 
+  const dragStartHandle = (e, item, position) => {
+    localStorage.setItem('item', JSON.stringify(item));
+  };
+  
+  const drapHandle = (e, position) => {
+    let i = JSON.parse(localStorage.getItem('item'));
+    changePosition(i.id, position, tasks);
+  };
+  
   return (
     <>
-      <div className={styles.colomn}>
+      <div
+        className={styles.colomn}
+        onDragOver={(e) => {
+          e.preventDefault();
+        }}
+        onDrop={(e) => {
+          drapHandle(e, position);
+        }}
+      >
         <div className={styles.title}>{position_name}</div>
         <div className={styles.cards}>
           {inner_tasks &&
             inner_tasks.map((item) =>
               item && item.position == position ? (
-                <div className={styles.card} key={item.id}>
+                <div
+                  className={styles.card}
+                  key={item.id}
+                  draggable={true}
+                  onDragStart={(e) => {
+                    dragStartHandle(e, item, position);
+                  }}
+                >
                   <span
                     onClick={(e) => handeDeleteBtn(item.id, tasks)}
                     className={styles.close}
@@ -88,29 +113,7 @@ const Column = ({ position, inner_tasks }) => {
                         ? 'priority red'
                         : 'priority'
                     }
-                  >
-                    {/* {!prioritySelected ? (
-                      <div>
-                        {item.taskPriority}
-                        <AiOutlineEdit onClick={handleEditClick} />
-                      </div>
-                    ) : (
-                      <div className="prioritySelect">
-                        <select
-                          // onBlur={(e) => handlePriorityOff(e, item, task__arr)}
-                          // onChange={(e) =>
-                          //   handlePriorityOff(e, item, task__arr)
-                          // }
-                        >
-                          <option value="lowest">LOWEST</option>
-                          <option value="low">LOW</option>
-                          <option value="medium">MEDIUM</option>
-                          <option value="high">HIGH</option>
-                          <option value="highest">HIGHEST</option>
-                        </select>
-                      </div>
-                    )} */}
-                  </h5>
+                  ></h5>
 
                   <div className={styles.item__priority}>
                     {item.taskPriority}
@@ -129,9 +132,9 @@ const Column = ({ position, inner_tasks }) => {
                     <span>Must be complited: </span>
                     <span
                       className={
-                        item.complitedDate < item.date
-                          ? `${styles.red}`
-                          : `${styles.green}`
+                        item.complitedDate > item.date
+                          ? `${styles.green}`
+                          : `${styles.red}`
                       }
                     >
                       {convertDateFunc(item.complitedDate)}

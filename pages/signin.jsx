@@ -18,7 +18,7 @@ const Signin = () => {
     email: '',
     password: ''
   };
-  const renderError = (message) => <p className={style.isDanger}>{message}</p>;
+  const renderError = (message) => <p className={styles.isDanger}>{message}</p>;
   const dispatch = useDispatch();
   const handleSubmit = (values) => {
     dispatch(login(values.email, values.password));
@@ -35,7 +35,7 @@ const Signin = () => {
           resetForm();
         }}
       >
-        <Form>
+        <Form autoComplete="off">
           <div className={styles.signup}>
             <div className={styles.control}>
               <h1>Sing In</h1>
@@ -58,6 +58,7 @@ const Signin = () => {
                     type="password"
                     className="input"
                     placeholder="Password"
+                    autoComplete="new-password"
                   />
                   <ErrorMessage name="password" render={renderError} />
                 </div>

@@ -49,7 +49,7 @@ const Signup = () => {
               resetForm();
             }}
           >
-            <Form>
+            <Form autoComplete='off'>
               <div className={styles.signup}>
                 <div className={styles.control}>
                   <h1>Sing up</h1>
@@ -93,6 +93,7 @@ const Signup = () => {
                         type="password"
                         className="input"
                         placeholder="Password"
+                        autoComplete='new-password'
                       />
                       <ErrorMessage name="password" render={renderError} />
                     </div>
